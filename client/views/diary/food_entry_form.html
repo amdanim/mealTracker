@@ -1,0 +1,45 @@
+<template name="foodEntryForm">
+{{#with foodEntry}}
+  <div class="container-fluid">
+      <form id="foodEntryForm" class="food-entry-form">
+        <div>
+        <fieldset>
+          <legend id="legendTitleFoodEntry">{{ foodEntryFormOperation }} Food Entry</legend>
+          <p>
+            <label class="field" for="date">Date:</label>
+            <input id="date" name="date" type="date" value="{{ entryDate }}" readonly />
+          </p>
+          <p>
+            <label class="field" for="foodname">Food Item:</label>
+            <input id="foodname" name="foodname" type="text" value="{{ foodname }}" readonly />
+          </p>
+          <p>
+            <label class="field" for="servings">Servings:</label>
+            <input id="servings" name="servings" type="number" value="{{ servings }}" />
+          </p>
+        
+          <!-- we need these inputs to keep context on these values --> 
+          <p>
+            <input id="servingunit" name="servingunit" type="hidden" value = "{{servingunit}}">
+          </p> 
+          <p>
+            <input id="carbohydrates" name="carbohydrates" type="hidden" value="{{ carbohydrates }}" readonly />
+          </p>
+          <p>
+            <input id="calories" name="calories" type="hidden" value="{{ calories }}" readonly />
+          </p>
+
+          <p>
+          	{{#if foodEntryFormOperationIsAdd}}
+            	<button id="addFoodEntry" class="button" type="button">Save</button>
+            {{else}}
+            	<button id="editFoodEntry" class="button" type="button">Save</button>
+            {{/if}}
+            <button id="cancelFoodEntry" class="button" type="button">Cancel</button>
+          </p>
+        </fieldset>  
+        </div>
+      </form>
+  </div>
+{{/with}}
+</template>

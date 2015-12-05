@@ -1,0 +1,27 @@
+
+
+fieldset {
+	border: none;
+	margin: 0 0 0 -10px;
+	padding: 0;
+}	
+
+legend {
+	font-size: 20px;
+	background-color: black;
+	color: white;
+	width: 100%;
+	padding: 5x;
+}
+
+label.field {
+	text-align: left;
+	width: 110px;
+	float: left;
+	font-weight: bold;
+}
+
+fieldset p {
+	clear: both;
+	padding: 5x;
+} 

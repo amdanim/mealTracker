@@ -1,0 +1,54 @@
+<template name="diary">
+{{#if currentUser}}
+	{{#if Template.subscriptionsReady }}
+		<!-- {{#if foodEntriesExist }} -->
+			<div class="container-fluid">
+				<legend id="legendTitleDiary">Daily Diary</legend>
+				<div> 
+					<p>
+           			  <label class="field" for="diarydate">Diary Date:</label>
+            		  <input class="diarydate" id="diarydate" name="diarydate" type="date" value = "{{ sessionVar 'foodEntryDate' }}"/>
+          			</p>
+          		</div>
+			 	
+				<table id="entries" style="border-collapse: separate; border-spacing: 15px;">
+					<thead>
+						<th>Date</th>
+						<th>Name</th>
+						<th>Calories</th>
+						<th>Carbs</th>
+						<th>Servings</th>
+						<th>Unit of Measurement</th>
+						<th>Save</th>
+						<th>Remove</th>
+					</thead>
+					<tbody>
+						
+						{{#each foodEntries }}
+							<tr>
+								{{> foodEntry }}
+							</tr>
+						{{/each}}
+						<tr>
+							<h4 class="totals">Totals</h4>
+							{{addTotals}}
+							<td></td>
+							<td class="totals">{{sessionVar 'totalCalories' }}</td>
+							<td class="totals">{{sessionVar 'totalCarbohydrates'  }}</td>
+						</tr>	
+					</tbody>
+					
+				</table>
+
+			</div>
+			<button id="addFoodEntryButton" class="button" type="button" >Add To Diary</button>	
+		<!-- {{else}} 
+			<h3>No food entries found. Please add food entries.</h3>	
+		 {{/if}} -->
+	{{else}}
+		{{> spinner }}
+	{{/if}}
+{{else}}
+	<h3>Please log in to view your diary.</h3>
+{{/if}}
+</template>

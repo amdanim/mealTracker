@@ -1,0 +1,11 @@
+<template name="defaultLayout">
+	<div class= "container-fluid">
+		{{> sAlert}}
+		<header><h1>Welcome to Meal Tracker!</h1></header>
+		<main>
+			{{> login }}
+	 		{{> Template.dynamic template=content }}
+		</main>
+	<!-- <footer><h6>&copy; 2015 Mohammed L. Amdani</h6></footer> -->
+	</div>
+</template>

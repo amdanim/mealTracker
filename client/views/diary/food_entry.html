@@ -1,0 +1,12 @@
+<template name="foodEntry">
+	<td>{{ formatDate entryDate }}</td>
+	<td>{{ foodname }}</td>
+	<td><label name="calories" id="{{ _id }}_calories">{{ caloriesForServings }}</label></td>
+	<td><label name="carbs" id="{{ _id }}_carbs">{{ carbsForServings }}</label></td>
+	<!--<td><label name="calories" id="{{ _id }}_calories">{{ calories }}</label></td> 
+	<td><label name="carbs" id="{{ _id }}_carbs">{{ carbohydrates }}</label></td> -->
+	<td><input class="servings" name="servings" id="{{ _id }}_servings" type="number" value= "{{ servings }}" /></td>					
+	<td>{{ servingunit }}</td>
+	<td><button id="{{ _id }}_save" class="button save-food-entry" type="button">Save</button></td>
+	<td><button id="remove-food-entry" class="button" type="button">X</button></td>
+</template>

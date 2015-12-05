@@ -1,0 +1,25 @@
+<template name="foodListForm">
+  	<div class="container-fluid">
+	  	{{#if Template.subscriptionsReady }}
+	  		<legend id="legendTitleFoodList">Food List</legend>
+	  		{{> reactiveTableFilter id="foodItemSearchFilter" label="Search"}}
+	  		{{> reactiveTable settings=foodTableSettings }}
+		{{/if}}
+		<br/>
+      	<button class="button" id="add-food-item-button" type="button">Add Food Item</button>
+      	<button id="back" class="button" type="button" >Back</button>
+  	</div>
+</template>
+
+
+<template name="selectFoodTmpl">
+  <button id="selectFoodButton" class="button">Select</button>
+</template>
+
+<template name="editFoodTmpl">
+  <button id="editFoodButton" class="button">Edit</button>
+</template>
+
+<template name="removeFoodTmpl">
+  <button id="removeFoodButton" class="button">X</button>
+</template>
