@@ -3,44 +3,44 @@
   <div class="container-fluid">
       <form id="foodForm" class="food-form">
         <div>
-        <fieldset>
-          <legend id="legendTitleFoodEntry">{{ foodFormOperation }} Food List</legend>
-          <p>
-            <label class="field" for="foodname">Food Item:</label>
-            <input id="foodname" name="foodname" type="text" value="{{ foodname }}" />
-          </p>
-          <p>
-            <label class="field" for="carbohydrates">Carbohydrates:</label>
-            <input id="carbohydrates" name="carbohydrates" type="number" value="{{ carbohydrates }}" />
-          </p>
-          <p>
-            <label class="field" for="calories">Calories:</label>
-            <input id="calories" name="calories" type="number" value="{{ calories }}" />
-          </p>
-          <p>
-            <label class="field" for="servings">Servings:</label>
-            <input id="servings" name="servings" type="number" value=1 readonly />
-          </p>
-          <p>
-            <label class="field" for="servingunit">Serving Unit:</label>
-            <select id="servingunit" name="servingunit" type="text">
-               <option value="unit" {{ unitTypeSelected "unit" }}>Unit</option>
-               <option value="cup" {{ unitTypeSelected "cup" }}>Cup</option>
-               <option value="plate" {{ unitTypeSelected "plate" }}>Plate</option>
-               <option value="tbspn" {{ unitTypeSelected "tbspn" }}>Table spoon</option>
-               <option value="packet" {{ unitTypeSelected "packet" }}>Packet</option>
-            </select>
-          </p>
-          <p>
-          	{{#if foodFormOperationIsAdd}}
-            	<button id="saveAddedFood" class="button" type="button">Save</button>
-            {{else}}
-            	<button id="saveEditedFood" class="button" type="button">Save</button>
-            {{/if}}
-            <button id="cancelFood" class="button" type="button">Cancel</button>
-            
-          </p>
-        </fieldset>  
+          <fieldset>
+            <legend id="legendTitleFoodEntry">{{ foodFormOperation }} Food List</legend>
+            <p>
+              <label class="field" for="foodname">Food Item:</label>
+              <input id="foodname" name="foodname" type="text" value="{{ foodname }}" />
+            </p>
+            <p>
+              <label class="field" for="carbohydrates">Carbohydrates:</label>
+              <input id="carbohydrates" name="carbohydrates" type="number" value="{{ carbohydrates }}" />
+            </p>
+            <p>
+              <label class="field" for="calories">Calories:</label>
+              <input id="calories" name="calories" type="number" value="{{ calories }}" />
+            </p>
+            <p>
+              <label class="field" for="servings">Servings:</label>
+              <input id="servings" name="servings" type="number" value=1 disabled />
+            </p>
+            <p>
+              <label class="field" for="servingunit">Serving Unit:</label>
+              <select id="servingunit" name="servingunit" type="text">
+                 <option value="unit" {{ unitTypeSelected "unit" }}>Unit</option>
+                 <option value="cup" {{ unitTypeSelected "cup" }}>Cup</option>
+                 <option value="plate" {{ unitTypeSelected "plate" }}>Plate</option>
+                 <option value="tbspn" {{ unitTypeSelected "tbspn" }}>Table spoon</option>
+                 <option value="packet" {{ unitTypeSelected "packet" }}>Packet</option>
+              </select>
+            </p>
+            <p>
+            	{{#if foodFormOperationIsAdd}}
+              	<button id="saveAddedFood" class="button" type="button">Save</button>
+              {{else}}
+              	<button id="saveEditedFood" class="button" type="button">Save</button>
+              {{/if}}
+              <button id="cancelFood" class="button" type="button">Cancel</button>
+              
+            </p>
+          </fieldset>  
         </div>
       </form>
   </div>

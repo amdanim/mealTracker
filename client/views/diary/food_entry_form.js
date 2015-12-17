@@ -10,42 +10,28 @@ Template.foodEntryForm.helpers({
 	'foodEntry': function () {
 		var id = FlowRouter.getParam("id");
 		var fromSelect = FlowRouter.getQueryParam("fromSelect");
+		
+		/* =======================================
 		console.log("in food entry form");
 		console.log(id);
 		console.log(fromSelect);
-		if(!fromSelect) {
-			if(id) {
-				var entry = FoodEntriesCollection.findOne(id);
-				return entry; 
-			} else {
-				var rfc339FormattedDate = moment(Date()).format('YYYY-MM-DD');
-				
-				return {
-					entryDate: rfc339FormattedDate,
-					foodname: "",
-					carbohydrates: 0,
-					calories: 0,
-					servings: 0,
-					servingunit: "Unit"
-				};
-			}
-		} else {
-			var foodDoc = FoodsCollection.findOne(id);
-			// var rfc339FormattedDate = moment(Date()).format('YYYY-MM-DD');
-			rfc339FormattedDate = Session.get("foodEntryDate");
-			console.log("in else condition " );
-			console.log(foodDoc.foodname);
-		    // console.log(FoodsCollection.foodname);
-			return {
-				entryDate: rfc339FormattedDate,
-				foodname: foodDoc.foodname,
-				carbohydrates: foodDoc.carbohydrates,
-				calories: foodDoc.calories,
-				servings: foodDoc.servings,
-				servingunit: foodDoc.servingunit,
-				userId: Meteor.userId
-			};
-		}
+		========================================== */
+
+		var foodDoc = FoodsCollection.findOne(id);
+		// var rfc339FormattedDate = moment(Date()).format('YYYY-MM-DD');
+		rfc339FormattedDate = Session.get("foodEntryDate");
+		
+	    // console.log(FoodsCollection.foodname);
+		return {
+			entryDate: rfc339FormattedDate,
+			foodname: foodDoc.foodname,
+			carbohydrates: foodDoc.carbohydrates,
+			calories: foodDoc.calories,
+			servings: foodDoc.servings,
+			servingunit: foodDoc.servingunit,
+			userId: Meteor.userId
+		};
+		
 	},
 
 	
@@ -99,20 +85,34 @@ Template.foodEntryForm.events({
 	    var calories = $('input[id=calories]').val();
 	    var servings = $('input[id=servings]').val();
 	    var servingunit = $('input[id=servingunit]').val(); //becuase it is input hidden and not select
-	    if (servings !== 1 ) {
-	    	calories = calories * servings;
-	    	carbohydrates = carbohydrates * servings;
-	    }
-	    FoodEntriesCollection.insert({
-	        entryDate: vdate, 
-	        foodname: foodname,
-	        carbohydrates: carbohydrates,
-	        calories: calories,
-	        servings: servings,
-	        servingunit: servingunit,
-	        userId: Meteor.userId()
-	   	}); 
-  	  	window.history.back();
+	    
+	    servings = servings * 1; // always a number
+	    calories = calories * servings; // always multiplied by # of servings
+	    carbohydrates = carbohydrates * servings; // always multiplied by # of servings
+
+	    console.log("FOODNAME = " + foodname);
+	    console.log("")
+	    var result = FoodEntriesCollection.insert({
+		        entryDate: moment.utc(vdate).toDate(), 
+		        foodname: foodname,
+		        carbohydrates: carbohydrates,
+		        calories: calories,
+		        servings: servings,
+		        servingunit: servingunit,
+		        userId: Meteor.userId()
+	   	});
+
+	   	console.log(result);
+
+	   	FlowRouter.go(FlowRouter.path("foodListRoute"));
+	    
+	    if(result) {
+	    	success("Food entry inserted.");
+	   	} else {
+	   		error("Food entry not inserted.");
+	   		warning("This is an issue.");
+	   		info("You should tell somebody.");
+	   	}
   	},
 
   	'click #editFoodEntry': function(evt, tpl) {
@@ -120,7 +120,8 @@ Template.foodEntryForm.events({
 	    var id = FlowRouter.getParam("id");
 	    var foodname = $('input[id=foodname]').val();
 	    var vdate = $('input[id=date]').val();
-	    console.log(vdate);
+	    var utcDate = moment.utc(vdate).toDate();
+	    console.log(utcDate);
 	    var carbohydrates = $('input[id=carbohydrates]').val();
 	    var calories = $('input[id=calories]').val();
 	    console.log(calories);
@@ -130,7 +131,7 @@ Template.foodEntryForm.events({
 	    
     	FoodEntriesCollection.update(id, 
     	{
-	      entryDate: vdate, 
+	      entryDate: moment.utc(vdate).toDate(), 
 	      foodname: foodname,
 	      carbohydrates: carbohydrates,
 	      calories: calories,

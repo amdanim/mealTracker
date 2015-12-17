@@ -1,0 +1,42 @@
+<template name="foodEntryReport">
+{{#if currentUser}}
+	{{#if Template.subscriptionsReady }}
+		<!-- {{#if foodEntriesExist }} -->
+		
+			<div class="container-fluid">
+				<legend id="legendTitleDiary">Monthly Report</legend>
+				<!-- <div>
+					<p>
+       					<label class="field" for="startdate">Start Date:</label>
+            			<input id="startdate" name="startdate" type="date" value="{{ startDate }}"/>
+          			</p>
+          			<p>
+            			<label class="field" for="enddate">End Date:</label>
+            			<input id="enddate" name="enddate" type="date" value="{{ endDate }}"/>
+         			</p>
+				</div> -->
+			 	
+				<table id="report" style="border-collapse: separate; border-spacing: 25px;">
+					<thead>
+						<th>Date</th>
+						<th>Carbs</th>
+						<th>Calories</th>
+					</thead>
+
+					<tbody>
+						{{#each foodEntryArrayItem }}
+							<tr>
+								{{> foodEntryReportItem }}
+							</tr>
+						{{/each}}
+						
+					</tbody>
+					
+				</table>
+
+			</div>
+			<button id="reportBack" class="button" type="button" >Back</button>	
+			
+	{{/if}}		
+{{/if}}
+</template>
