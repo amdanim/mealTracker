@@ -83,7 +83,7 @@ Template.foodEntry.events({
             console.log(servings);
             ====================================== */
 
-            console.log("Formatted UTC Date: " + moment.utc(this.entryDate).toDate());
+            //console.log("Formatted UTC Date: " + moment.utc(this.entryDate).toDate());
 
         FoodEntriesCollection.update(id, 
         { $set: {

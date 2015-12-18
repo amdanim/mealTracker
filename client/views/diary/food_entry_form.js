@@ -90,8 +90,8 @@ Template.foodEntryForm.events({
 	    calories = calories * servings; // always multiplied by # of servings
 	    carbohydrates = carbohydrates * servings; // always multiplied by # of servings
 
-	    console.log("FOODNAME = " + foodname);
-	    console.log("")
+	    //console.log("FOODNAME = " + foodname);
+	    //console.log("")
 	    var result = FoodEntriesCollection.insert({
 		        entryDate: moment.utc(vdate).toDate(), 
 		        foodname: foodname,
@@ -102,7 +102,7 @@ Template.foodEntryForm.events({
 		        userId: Meteor.userId()
 	   	});
 
-	   	console.log(result);
+	   	// console.log(result);
 
 	   	FlowRouter.go(FlowRouter.path("foodListRoute"));
 	    

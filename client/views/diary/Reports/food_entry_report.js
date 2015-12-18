@@ -13,7 +13,7 @@ Template.foodEntryReport.helpers({
 		var id = Meteor.userId();
 		var dayOfEntries = Session.get("foodEntryDate");
 		
-		console.log("User Id: " + id + " and Date: " + dayOfEntries);
+		// console.log("User Id: " + id + " and Date: " + dayOfEntries);
 		
 		var monthStart = moment.utc(dayOfEntries).startOf('month').toDate();
 		var monthEnd = moment.utc(dayOfEntries).endOf('month').toDate();
@@ -21,8 +21,8 @@ Template.foodEntryReport.helpers({
 		// From the data for the month we want to grab the data for each day,
 		// sum the calories and carbs and return the date, totalCalories and totalCarbs
 		// as one row to be displayed. 
+		
 		var foodEntryReportArray = [];
-
 		var newDate = monthStart;
         while (newDate <= monthEnd)
 		{
@@ -46,7 +46,7 @@ Template.foodEntryReport.helpers({
 	    	//);
     		
     		if(foodReportCursor) {
-    			 console.log("Food Report Cursor valid");
+    			 // console.log("Food Report Cursor valid");
 
     			_.each(foodReportCursor.fetch(), function (item) {
         			//console.log("entrydate " + item.entryDate); 
@@ -61,18 +61,18 @@ Template.foodEntryReport.helpers({
         		});	
 	  		};
 	  		if(totalCalories > 0 || totalCarbohydrates > 0) {
-	  			console.log("entryDate = " + moment.utc(newDate).toDate());
+	  			// console.log("entryDate = " + moment.utc(newDate).toDate());
 	  			var newEntry = {entryDate: moment.utc(newDate).toDate(), calories: totalCalories, 
 	        			carbohydrates: totalCarbohydrates};
 	        	    
 	      	//console.log("arrayentry " + newEntry);
 	        	foodEntryReportArray.push(newEntry);
-	        	console.log("after push entryDate = " + moment.utc(newDate).toDate());
+	        	// console.log("after push entryDate = " + moment.utc(newDate).toDate());
 		    }
 		    newDate = moment.utc(newDate.setDate(newDate.getDate()+1)).toDate();
 		}
 
-		console.log(foodEntryReportArray);   
+		//console.log(foodEntryReportArray);   
 		return foodEntryReportArray;
 	}	
 });

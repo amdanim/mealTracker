@@ -1,7 +1,7 @@
 Template.diary.onCreated(function () {
 	var self = this;
 	var rfc339FormattedDate = moment.utc(Date()).format('YYYY-MM-DD');
-	console.log("type of date = " + typeof rfc339FormattedDate);
+	// console.log("type of date = " + typeof rfc339FormattedDate);
 	if (!Session.get("foodEntryDate")) {
 		var date = rfc339FormattedDate;
 		Session.set("foodEntryDate", date);

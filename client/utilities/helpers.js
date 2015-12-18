@@ -3,7 +3,7 @@ Template.registerHelper('formatDate', function(date) {
 });
 
 Template.registerHelper('formatDisplayDate', function(date) {
-  console.log("registerHelper = " + moment.utc(date).format('MM-DD-YYYY'));
+  // console.log("registerHelper = " + moment.utc(date).format('MM-DD-YYYY'));
   return moment.utc(date).format('MM-DD-YYYY');
 });
 
