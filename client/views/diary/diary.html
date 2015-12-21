@@ -11,7 +11,7 @@
           			</p>
           		</div>
 			 	
-				<table id="entries" class="table table-striped">
+				<table id="entries" style="border-collapse: separate; border-spacing: 15px;">
 					<thead>
 						<th>Date</th>
 						<th>Name</th>
@@ -31,7 +31,7 @@
 						{{/each}}
 						<tr>
 							<h4 class="totals">Totals</h4>
-							<!-- {{addTotals}} -->
+							{{addTotals}}
 							<td></td>
 							<td class="totals">{{sessionVar 'totalCalories' }}</td>
 							<td class="totals">{{sessionVar 'totalCarbohydrates'  }}</td>
@@ -42,7 +42,6 @@
 
 			</div>
 			<button id="addFoodEntryButton" class="button" type="button" >Add To Diary</button>	
-			<button id="foodEntryReportButton" class="button" type="button" >Monthly Report</button>	
 		<!-- {{else}} 
 			<h3>No food entries found. Please add food entries.</h3>	
 		 {{/if}} -->

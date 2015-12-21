@@ -1,4 +1,3 @@
-/*
 Session.setDefault('limit', 4);
 
 // Meteor.subscribe('foods');
@@ -67,4 +66,3 @@ if (Meteor.isServer) {
     // code to run on server at startup
   });
 }
-*/

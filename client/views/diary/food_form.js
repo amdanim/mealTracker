@@ -8,10 +8,13 @@ Template.foodForm.onCreated(function () {
 Template.foodForm.helpers({
 	'food': function () {
 		var id = FlowRouter.getParam("id");
+		console.log(id);
+		console.log("in food");
 		if(id) {
 			var food = FoodsCollection.findOne(id);
 			return food; 
 		} else {
+			
 			return {
 				foodname: "",
 				carbohydrates: 0,
@@ -65,9 +68,9 @@ Template.foodForm.events({
   	'click #saveAddedFood': function(evt, tpl) {
 	    evt.preventDefault();
 	    var foodname = $('input[id=foodname]').val();
-	    var carbohydrates = $('input[id=carbohydrates]').val() * 1;
-	    var calories = $('input[id=calories]').val() * 1;
-	    var servings = $('input[id=servings]').val() * 1;
+	    var carbohydrates = $('input[id=carbohydrates]').val();
+	    var calories = $('input[id=calories]').val();
+	    var servings = $('input[id=servings]').val();
 	    var servingunit = $('select[id=servingunit]').val();
 	    
 	    FoodsCollection.insert({
@@ -78,7 +81,8 @@ Template.foodForm.events({
 	        servingunit: servingunit,
 	        userId: Meteor.userId()
 	   	}); 
-	   	
+
+	   	// TODO: Switch to route to diary
   	  	FlowRouter.go(FlowRouter.path("foodListRoute"));
   	  	$("#add-food-item-button").focus();
   	},
@@ -87,9 +91,9 @@ Template.foodForm.events({
 	    evt.preventDefault();
 	    var id = FlowRouter.getParam("id");
 	    var foodname = $('input[id=foodname]').val();
-	    var carbohydrates = $('input[id=carbohydrates]').val() * 1;
-	    var calories = $('input[id=calories]').val() * 1;
-	    var servings = $('input[id=servings]').val() * 1;
+	    var carbohydrates = $('input[id=carbohydrates]').val();
+	    var calories = $('input[id=calories]').val();
+	    var servings = $('input[id=servings]').val();
 	    var servingunit = $('select[id=servingunit]').val();
 	    
     	FoodsCollection.update(id, 
@@ -101,7 +105,7 @@ Template.foodForm.events({
 	       servingunit: servingunit,
 	       userId: Meteor.userId()
 		});
-		
+		// TODO: Switch to route to diary
     	window.history.back();
   	}
 

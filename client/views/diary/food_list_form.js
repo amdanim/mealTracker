@@ -27,7 +27,7 @@ Template.foodListForm.events({
     'click #selectFoodButton': function(evt, tpl) {
     	evt.preventDefault();
     	var id = this._id;
-    	// console.log(id);
+    	console.log(id);
     	
     	var params = {id: id};
     	var queryParams = {fromSelect: true}
@@ -52,7 +52,7 @@ Template.foodListForm.events({
 
 Template.foodListForm.helpers({
 	foods: function () {
-		// console.log("in foods");
+		console.log("in foods");
 		var foodsCursor = FoodsCollection.find();
 		return foodsCursor;
 	},
