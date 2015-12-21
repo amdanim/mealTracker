@@ -1,0 +1,24 @@
+<template name="foodEntryReport">
+{{#if currentUser}}
+	{{#if Template.subscriptionsReady }}
+		<div class="container-fluid">
+			<legend id="legendTitleDiary">Monthly Report</legend>
+				<table class="table table-striped" id="reportTable" >
+					<thead id="reportHeadings">
+						<th class="col-md-2">Date</th>
+						<th class="col-md-3">Carbohydrates</th>
+						<th class="col-md-4">Calories</th>
+					</thead>
+				<tbody>
+					{{#each foodEntryArrayItem }}
+						<tr>
+							{{> foodEntryReportItem }}
+						</tr>
+					{{/each}}
+				</tbody>
+			</table>
+		</div>
+		<button id="reportBack" class="button" type="button" >Back</button>	
+	{{/if}}		
+{{/if}}
+</template>

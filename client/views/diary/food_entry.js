@@ -73,6 +73,7 @@ Template.foodEntry.events({
         var servingsCell = $('#' + id + "_servings");
         servingsCell.removeClass("redBorder");
         
+            /* =================================
             console.log("in update " + id);
             console.log(this.foodname);
             console.log(this.carbohydrates);
@@ -80,10 +81,13 @@ Template.foodEntry.events({
             console.log(this.calories);
             console.log(this.servings);
             console.log(servings);
+            ====================================== */
+
+            //console.log("Formatted UTC Date: " + moment.utc(this.entryDate).toDate());
 
         FoodEntriesCollection.update(id, 
         { $set: {
-                entryDate: this.entryDate,
+                entryDate: moment.utc(this.entryDate).toDate(),
                 foodname: this.foodname,
                 carbohydrates: carbohydrates,
                 calories: calories,
@@ -92,7 +96,7 @@ Template.foodEntry.events({
                 userId: Meteor.userId()
             }
         });
-    s
+    
         sAlert.success('Food Entry Updated');
     }
 }); 
