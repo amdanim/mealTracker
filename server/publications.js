@@ -5,7 +5,7 @@ Meteor.publish('foods', function() {
 Meteor.publish('foodEntriesForDate', function (user, dayOfEntries) {
 	var dayStart = moment.utc(dayOfEntries).startOf('day').toDate();
 	var dayEnd = moment.utc(dayOfEntries).endOf('day').toDate();
-	console.log("dayEnd = " + dayEnd);
+	// console.log("dayEnd = " + dayEnd);
 	
 	var dataCursor = FoodEntriesCollection.find(
 		{$and: [
@@ -28,7 +28,7 @@ Meteor.publish('foodEntriesForMonth', function (user, dayOfEntries) {
 	var monthStart = moment.utc(dayOfEntries).startOf('month').toDate();
 	var monthEnd = moment.utc(dayOfEntries).endOf('month').toDate();
 	
-	console.log(monthEnd);
+	// console.log(monthEnd);
 	var dataCursor = FoodEntriesCollection.find(
 		{$and: [
 			{userId: user}, 
