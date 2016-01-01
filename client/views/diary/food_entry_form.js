@@ -74,7 +74,11 @@ Template.foodEntryForm.events({
 
   	'click #cancelFoodEntry': function(evt, tpl) {
 	    evt.preventDefault();
-	    window.history.back();
+	    if (foodEntryFormOperationIsAdd) {
+	   		FlowRouter.go(FlowRouter.path("addfoodEntryRoute"));
+	    }else {
+		    FlowRouter.go(FlowRouter.path("editfoodEntryRoute"));
+ 		}
  	},
 
   	'click #addFoodEntry': function(evt, tpl) {
@@ -139,6 +143,6 @@ Template.foodEntryForm.events({
 	      servingunit: servingunit,
 	      userId: Meteor.userId()
 		});
-    	window.history.back();
+    	FlowRouter.go(FlowRouter.path("editfoodEntryRoute"));
   	}
 });

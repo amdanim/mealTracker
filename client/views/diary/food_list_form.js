@@ -24,21 +24,29 @@ Template.foodListForm.events({
         FlowRouter.go(path);
     },
 
-    'click #selectFoodButton': function(evt, tpl) {
+    'click .selectFoodButton' : function(evt, tpl) {
     	evt.preventDefault();
     	var id = this._id;
-    	// console.log(id);
     	
     	var params = {id: id};
-    	var queryParams = {fromSelect: true}
+    	var queryParams = {fromSelect: true};
         var path = FlowRouter.path("selectedFoodEntryRoute", params, queryParams);
         FlowRouter.go(path);
 
     },
 
+    'dblclick .foodname' : function(evt, tpl) {
+    	evt.preventDefault();
+    	var id = evt.target.id;
+
+    	var params = {id: id};
+    	var queryParams = {fromSelect: true};
+    	var path = FlowRouter.path("selectedFoodEntryRoute", params, queryParams);
+    	FlowRouter.go(path);
+    },
+
 	'click #back': function(e) {
 		e.preventDefault();
-		// return window.history.back();
 		var path = FlowRouter.path("diaryRoute");
 		FlowRouter.go(path);
 	},
@@ -61,19 +69,19 @@ Template.foodListForm.helpers({
 		var foodsCursor = FoodsCollection.find();
  
 		var customFields = [
-			{ key: 'foodname', label: 'Food Item' },
+			{ key: 'select', label: 'Select', tmpl: Template.selectFoodTmpl },
+			{ key: 'foodname', label: 'Food Item', tmpl: Template.foodNameTmpl },
 			{ key: 'calories', label: 'Calories' },
 			{ key: 'carbohydrates', label: 'Carbohydrates' },
 			{ key: 'servings', label: 'Servings' },
-			{ key: 'servingunit', label: 'Serving unit' },
-			{ key: 'select', label: 'Select', tmpl: Template.selectFoodTmpl },
+			{ key: 'servingunit', label: 'Serving unit' },		
 			{ key: 'edit', label: 'Edit', tmpl: Template.editFoodTmpl },
 			{ key: 'remove', label: 'Remove', tmpl: Template.removeFoodTmpl }
 		];
 
 		var settings = {
 			collection: foodsCursor,
-			rowsPerPage: 10,
+			rowsPerPage: 5,
 			filters: ['foodItemSearchFilter'],
 			showNavigation: 'auto',
 			fields: customFields

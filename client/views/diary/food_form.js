@@ -59,7 +59,7 @@ Template.foodForm.events({
 	
 	'click #cancelFood': function(evt, tpl) {
 	    evt.preventDefault();
-	    window.history.back();
+	    FlowRouter.go(FlowRouter.path("foodListRoute"));
  	},
 
   	'click #saveAddedFood': function(evt, tpl) {
@@ -102,7 +102,7 @@ Template.foodForm.events({
 	       userId: Meteor.userId()
 		});
 		
-    	window.history.back();
+    	FlowRouter.go(FlowRouter.path("foodListRoute"));
   	}
 
 
