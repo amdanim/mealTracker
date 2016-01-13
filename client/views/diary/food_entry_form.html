@@ -21,7 +21,8 @@
           
             <!-- we need these inputs to keep context on these values --> 
             <p>
-              <input id="servingunit" name="servingunit" type="hidden" value = "{{servingunit}}">
+              <label class="field" for="servingunit">Serving Unit:</label>
+              <input id="servingunit" name="servingunit"  value = "{{servingunit}}" readonly >
             </p> 
             <p>
               <input id="carbohydrates" name="carbohydrates" type="hidden" value="{{ carbohydrates }}" readonly />

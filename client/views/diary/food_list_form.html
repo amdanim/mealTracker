@@ -11,9 +11,13 @@
   	</div>
 </template>
 
+<template name="foodNameTmpl">
+  <label id="{{ _id }}">{{ foodname }}</label>
+</template>
+
 
 <template name="selectFoodTmpl">
-  <button id="selectFoodButton" class="button">Select</button>
+  <button class="button selectFoodButton">Select</button>
 </template>
 
 <template name="editFoodTmpl">
